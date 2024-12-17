@@ -2,23 +2,24 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        String nameFile= Path.Combine(FileSystem.AppDataDirectory, "notes.txt");
         public MainPage()
         {
             InitializeComponent();
+            if (File.Exists(nameFile))
+            {
+                editor.Text = File.ReadAllText(nameFile);
+            }
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void clicarAnnadir(object sender, EventArgs e)
         {
-            count++;
+            
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private void clicarBorrar(object sender, EventArgs e)
+        {
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 
